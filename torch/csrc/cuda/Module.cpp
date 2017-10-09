@@ -345,6 +345,8 @@ PyObject * THCPModule_initExtension(PyObject *self)
 }
 
 #ifdef WITH_NCCL
+#include "nccl.h"
+
 void THCPModule_useNccl()
 {
   // Use NCCL to ensure that the symbols are loaded
@@ -384,6 +386,8 @@ static struct PyMethodDef _THCPModule_methods[] = {
   {"_cuda_sleep", (PyCFunction)THCPModule_cudaSleep, METH_O, NULL},
   {"_cuda_lock_mutex",   (PyCFunction)THCPModule_cudaLockMutex,   METH_NOARGS,  NULL},
   {"_cuda_unlock_mutex", (PyCFunction)THCPModule_cudaUnlockMutex, METH_NOARGS,  NULL},
+  {"_nccl_reduce", (PyCFunction)THCPModule_nccl_reduce, METH_VARARGS, NULL},
+  {"_nccl_destroy", (PyCFunction)THCPModule_nccl_destroy, METH_NOARGS, NULL},
   {NULL}
 };
 
