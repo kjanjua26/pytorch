@@ -28,8 +28,8 @@ void* tensorPointer(cudnnDataType_t dataType, THVoidTensor* tensor)
 void checkIOSize(THVoidTensor *theta, THVoidTensor *grid,
 		   int N, int H, int W)
 {
-  THVoidTensor_assertContiguous(theta);
-  THVoidTensor_assertContiguous(grid);
+  THVoidTensor_assertContiguous(theta, "CuDNN AffineGridGenerator");
+  THVoidTensor_assertContiguous(grid, "CuDNN AffineGridGenerator");
 
   CHECK_ARG(grid->nDimension == 4);
   CHECK_ARG(grid->size[0] == N);

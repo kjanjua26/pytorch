@@ -37,7 +37,7 @@ void setWeightDescriptor(FilterDescriptor& desc, cudnnDataType_t dataType, THVoi
 {
   CHECK_ARG(weight->nDimension <= 5);
   int weightSize[5];
-  THVoidTensor_assertContiguous(weight);
+  THVoidTensor_assertContiguous(weight, "CuDNN Convolution");
   for (int i = 0; i < weight->nDimension; ++i) {
     weightSize[i] = (int) weight->size[i];
   }

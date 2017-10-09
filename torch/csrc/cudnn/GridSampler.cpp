@@ -44,7 +44,7 @@ void checkGridSize(THVoidTensor *grid, THVoidTensor *input)
   // FYI: grid is between [-1, 1], where -1 left most pixel,
   // 1 represents right most pixel (and hence 0 is the center pixel)
   // if grid has values >1 or <-1, those values are ignored
-  THVoidTensor_assertContiguous(grid);
+  THVoidTensor_assertContiguous(grid, "CuDNN GridSampler");
   CHECK_ARG(grid->nDimension == 4);
   CHECK_ARG(grid->size[0] == input->size[0]);
   CHECK_ARG(grid->size[3] == 2);  

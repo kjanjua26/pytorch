@@ -372,6 +372,7 @@ main_sources = [
     "torch/csrc/Exceptions.cpp",
     "torch/csrc/Storage.cpp",
     "torch/csrc/DynamicTypes.cpp",
+    "torch/csrc/Types.cpp",
     "torch/csrc/byte_order.cpp",
     "torch/csrc/utils.cpp",
     "torch/csrc/expand_utils.cpp",

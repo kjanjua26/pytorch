@@ -3,6 +3,7 @@
 
 #include <Python.h>
 #include <cstddef>
+#include <string>
 
 template <typename T> struct THPTypeInfo {};
 
@@ -36,6 +37,11 @@ struct THPVoidTensor {
   char device_type;
   char data_type;
 };
+
+void _THVoidTensor_assertContiguous(THVoidTensor *tensor, const std::string &prefix, const std::string& name);
+
+#define THVoidTensor_assertContiguous(tensor, prefix)			\
+  _THVoidTensor_assertContiguous(tensor, prefix, #tensor " tensor")
 
 }  // namespace torch
 
