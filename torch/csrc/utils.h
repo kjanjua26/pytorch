@@ -142,6 +142,16 @@ int THPUtils_getCallable(PyObject *arg, PyObject **result);
   (PySlice_GetIndicesEx((PySliceObject*)SLICE, LEN, START, STOP, LENGTH, STEP) == 0)
 #endif
 
+#define THPUtils_checkDenseCudaTensor(obj)		\
+  (PyObject_IsInstance(obj, THCPDoubleTensorClass)	\
+   || PyObject_IsInstance(obj, THCPFloatTensorClass)	\
+   || PyObject_IsInstance(obj, THCPHalfTensorClass)	\
+   || PyObject_IsInstance(obj, THCPLongTensorClass)	\
+   || PyObject_IsInstance(obj, THCPIntTensorClass)	\
+   || PyObject_IsInstance(obj, THCPShortTensorClass)	\
+   || PyObject_IsInstance(obj, THCPCharTensorClass)	\
+   || PyObject_IsInstance(obj, THCPByteTensorClass))
+
 #define THStoragePtr TH_CONCAT_3(TH,Real,StoragePtr)
 #define THTensorPtr  TH_CONCAT_3(TH,Real,TensorPtr)
 #define THPStoragePtr TH_CONCAT_3(THP,Real,StoragePtr)
