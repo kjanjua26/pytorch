@@ -20,10 +20,22 @@ typedef struct THVoidStorage
   THVoidStorage *view;
 } THVoidStorage;
 
+typedef struct THCVoidStorage
+{
+  void *data;
+  ptrdiff_t size;
+  int refcount;
+  char flag;
+  void *allocator;
+  void *allocatorContext;
+  THVoidStorage *view;
+  int device;
+} THCVoidStorage;
+
 typedef struct THVoidTensor
 {
-   long *size;
-   long *stride;
+   int64_t *size;
+   int64_t *stride;
    int nDimension;
    THVoidStorage *storage;
    ptrdiff_t storageOffset;
