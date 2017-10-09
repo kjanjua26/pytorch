@@ -55,6 +55,9 @@ void _THVoidTensor_assertContiguous(THVoidTensor *tensor, const std::string &pre
 #define THVoidTensor_assertContiguous(tensor, prefix)			\
   _THVoidTensor_assertContiguous(tensor, prefix, #tensor " tensor")
 
+int64_t THVoidTensor_nElement(THVoidTensor *tensor);
+void*   THVoidTensor_data(THVoidTensor *tensor);
+
 }  // namespace torch
 
 #endif

@@ -18,4 +18,23 @@ void _THVoidTensor_assertContiguous(THVoidTensor *tensor, const std::string& pre
   }
 }
 
+int64_t THVoidTensor_nElement(THVoidTensor *tensor) {
+  if (tensor->nDimension == 0) {
+    return 0;
+  }
+
+  int64_t nElement = 1;
+  for (int i = 0; i < tensor->nDimension; i++) {
+    nElement = nElement * tensor->size[i];
+  }
+  return nElement;
+}
+
+void* THVoidTensor_data(THVoidTensor *tensor) {
+  if (tensor->storage) {
+    return (void*) ((ptrdiff_t)tensor->storage->data + tensor->storageOffset);
+  }
+  return NULL;
+}
+
 }
